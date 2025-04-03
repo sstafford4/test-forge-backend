@@ -1,10 +1,8 @@
-# FastAPI CRUD Application with Beanie ODM
+# Test Forge Backend
 
 [![Coverage Status](https://coveralls.io/repos/github/ucm-cse-prg/fastapi-app/badge.svg?branch=main)](https://coveralls.io/github/ucm-cse-prg/fastapi-app?branch=main)
 
-This project is a simple CRUD application built with FastAPI, MongoDB (via Beanie and Motor), and Typer for command-line interface commands. It also offers Docker support and unit tests with pytest, making deployment and testing easy.
-
-The application allows users to perform CRUD operations on products via a RESTful API.
+This repository is for the back end of the Test Forge project, built using FastAPI, beanie, and MongoDB. 
 
 ## Table of Contents
 
@@ -26,11 +24,11 @@ The application allows users to perform CRUD operations on products via a RESTfu
 
 ## Project Overview
 
-This sample project demonstrates:
+The back-end code includes:
 
 - Asynchronous programming with FastAPI.
 - Integration with MongoDB using the Beanie ODM.
-- CRUD operations for product management.
+- CRUD operations for the Test Forge project.
 - A command-line interface (via Typer) for server management.
 - Containerization using Docker.
 - Testing with pytest and static analysis with ruff.
@@ -138,11 +136,7 @@ uv run fastapi dev
 
 The API endpoints (defined in `app/api.py`) include:
 
-- **`GET /products/`** – List all products.
-- **`GET /products/{product_id}`** – Retrieve a product by its ID.
-- **`POST /products/`** – Create a new product.
-- **`PATCH /products/{product_id}`** – Update an existing product.
-- **`DELETE /products/{product_id}`** – Delete a product.
+{{ ADD THESE LATER WHEN YOUVE MADE THEM }} 
 
 You can view the interactive Swagger UI at:  
 `http://fastapi-app:8000/docs`  
@@ -171,28 +165,7 @@ uv run pytest --cov=app
 
 This project includes a comprehensive test suite for the API endpoints. The tests cover:
 
-- **Product Creation:**
-    - Creating a valid product and verifying the returned data.
-    - Validating input constraints by rejecting products with:
-        - Prices below the minimum or above the maximum allowed.
-        - Invalid names (e.g., names with spaces violating the regex).
-
-- **Product Retrieval:**
-    - Retrieving an existing product by its ID.
-    - Ensuring a deleted product cannot be retrieved (expecting a 404 response).
-
-- **Product Update:**
-    - Successfully updating product details.
-    - Rejecting updates with invalid data like negative prices, incorrect name formats, or prices that do not end with 0.99.
-    - Handling update requests for non-existent products.
-
-- **Product Deletion:**
-    - Deleting a product and verifying it has been removed.
-    - Attempting to delete non-existent products with appropriate error responses.
-
-- **Bulk Operations:**
-    - Creating multiple products in succession.
-    - Retrieving all products to ensure the product list is updated correctly.
+{{ ALSO ADD THIS AS YOU GO }} 
 
 - **Error Handling:**
     - Triggering an internal server error by simulating a disconnect from the database, and verifying the system's error responses.
