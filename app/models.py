@@ -1,8 +1,6 @@
 # Module for defining Pydantic models for the application.
 from pydantic import BaseModel, Field
 
-
-
 class Course(BaseModel):
     """
     This is the data model for a course in the application.
@@ -56,7 +54,9 @@ class Quiz(BaseModel):
                        max_length=200,
                        min_length=1,
                        example=["quiz1.pdf", "quiz2.pdf"])
-    course: Course
+    
+    course_id: str = Field(title="Course Code",
+                            description="Reference to the course") 
 
 class CourseMaterial(BaseModel):
     """
@@ -79,4 +79,6 @@ class CourseMaterial(BaseModel):
                        max_length=200,
                        min_length=1,
                        example=["lecture_notes.pdf", "lecture_slides.pdf"])
-    course: Course
+    
+    course: str = Field(title="Course Code",
+                        description="Reference to the course")
