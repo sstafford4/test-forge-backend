@@ -1,7 +1,8 @@
-"""
-Module for defining API request and response schemas.
+from pydantic import BaseModel
+from app.models import Course, Quiz, CourseMaterial
 
-This module defines Pydantic models that represent the data structures for products
-used in various API endpoints, such as creating, retrieving, and updating products.
-These schemas help with data validation and serialization between the client and server.
-"""
+class createCourseRequest(Course, BaseModel):
+    pass
+
+class createCourseResponse(Course, BaseModel):
+    pass

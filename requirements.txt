@@ -8,3 +8,4 @@ mypy
 pydantic
 motor
 docker-compose
+boto3

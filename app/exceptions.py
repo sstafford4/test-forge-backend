@@ -9,13 +9,6 @@ logger = logging.getLogger("uvicorn.error")
 
 
 class APIException(Exception):
-    """
-    Base exception class for API-related errors.
-
-    This exception is raised when an API error occurs. It includes an HTTP status code
-    and a descriptive error message.
-    """
-
     def __init__(self, code: int, detail: str):
         # HTTP status code that indicates the type of error.
         self.code = code
@@ -29,12 +22,6 @@ class APIException(Exception):
 
 
 class InternalServerError(APIException):
-    """
-    Exception raised for internal server errors (HTTP 500).
-
-    Inherits from APIException and automatically assigns a 500 HTTP status code.
-    """
-
     def __init__(self, detail: str):
         # Initialize with HTTP 500 status code and a generic internal server error message.
         super().__init__(

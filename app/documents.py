@@ -7,7 +7,6 @@ from app.models import CourseMaterial as MaterialModel
 # All 3 of these are just prototypes. They will be changed later.
 # For now, they are just here to show how to use the models.
 
-
 class Course(Document, CourseModel): 
     class Settings:
         collection = "courses"
@@ -27,4 +26,3 @@ class CourseMaterial(Document, MaterialModel):
     class Settings:
         collection = "course_materials"
         indexes = ["course"] # index based on the course attribute.
-

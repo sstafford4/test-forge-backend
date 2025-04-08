@@ -5,14 +5,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """
-    Application configuration settings.
-
-    This class defines the settings for the API, including administrative details,
-    database connection parameters, and server configuration. Values can be loaded from
-    environment variables, with a '.env' file serving as a source for these variables.
-    """
-
     mongodb_url: str = Field(
         default="mongodb://localhost:27017",
         title="MongoDB URL",
@@ -54,30 +46,10 @@ settings = Settings()
 
 
 def set_settings(new_settings: Settings) -> None:
-    """
-    Set the application settings to the provided instance.
-
-    This function allows the application settings to be updated with a new instance
-    of the Settings class. This can be useful when the settings need to be modified
-    programmatically.
-
-    Args:
-        new_settings (Settings): The new application configuration settings.
-    """
     global settings
     settings = new_settings
 
 
 @lru_cache()
 def get_settings() -> Settings:
-    """
-    Retrieve a cached instance of the application settings.
-
-    This function uses an LRU (Least Recently Used) cache to ensure that the settings
-    are only instantiated once. Subsequent calls will return the cached instance,
-    reducing redundant processing.
-
-    Returns:
-        Settings: The application configuration settings.
-    """
     return settings

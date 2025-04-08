@@ -17,19 +17,19 @@ class Course(BaseModel):
                        description="Name of the course",
                        max_length=100,
                        min_length=1,
-                       example=["Multivariable Calculus", "Linear Algebra"])
+                       example="Multivariable Calculus")
     
     code : str = Field(title="Course Code",
                        description="Code of the course",
                        max_length=10,
                        min_length=1, 
-                       example=["MATH 023", "MATH 024"])
+                       example="MATH 023")
     
     professor : str = Field(title="Professor Name",
                             description="Name of the professor",
                             max_length=50,
                             min_length=1, 
-                            example=["Ross Greer", "Santosh", "Spencer Stafford"])
+                            example="Santosh")
 
 class Quiz(BaseModel):
     """
@@ -82,3 +82,8 @@ class CourseMaterial(BaseModel):
     
     course: str = Field(title="Course Code",
                         description="Reference to the course")
+
+class UploadResponse(BaseModel):
+    filename: str
+    s3_key: str
+    url: str
